@@ -1,6 +1,14 @@
 server {
-        listen 80;
-        server_name 13.89.59.121;
+        #listen 80;
+        #server_name 13.89.59.121;
+        
+        listen                  443 ssl;
+        server_name             13.89.59.121;
+        ssl_certificate         /home/pramod_sharma/opt/ssl/33904573_13.89.59.121.cert;
+        ssl_certificate_key     /home/pramod_sharma/opt/ssl/33904573_13.89.59.121.key;
+        ssl_protocols           TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers             HIGH:!aNULL:!MD5;
+
 
         # angular app
         location / {
