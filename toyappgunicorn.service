@@ -1,0 +1,11 @@
+[Unit]
+Description=Gunicorn service to serve toy app backend
+Requires=toyapp.sock
+After=network.target
+
+[Service]
+User=pramod_sharma
+Group=www-data
+WorkingDirectory=/home/pramod_sharma/toy-project/src
+ExecStart=/usr/bin/gunicorn3 --workers 3 --bind unix:toyapp.sock -m 007 app:app
+
