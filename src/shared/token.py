@@ -4,7 +4,7 @@ SECRET_KEY = 'ournewtoyapp'
 
 def encode_token(data):
     """ data should be of type dictionary"""
-    token = jwt.encode(data, SECRET_KEY)
+    token = jwt.encode(data, SECRET_KEY).decode('utf-8')
     return token
 
 def decode_token(token):
