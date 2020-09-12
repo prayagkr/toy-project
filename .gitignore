@@ -2,4 +2,4 @@
 .vscode
 toy-frontend/node_modules
 toy-frontend/dist
-src/toy-env
+src/envtoy
