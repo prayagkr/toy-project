@@ -1,0 +1,17 @@
+
+.flex {  
+    display: flex;
+    flex-direction: row;
+}
+.flex-col {  
+    display: flex;
+    flex-direction: column;
+}
+.flex-inline {  
+    display: inline-flex;
+    flex-direction: row;
+}
+.flex-inline-col {  
+    display: inline-flex;
+    flex-direction: column;
+}

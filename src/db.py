@@ -13,3 +13,8 @@ PASSWORD = CP.get('sql_conn', 'password')
 
 
 db = pymysql.connect(HOST, USERNAME, PASSWORD, DATABASE)
+
+# cursor = db.cursor()
+# sql = "SELECT * FROM employee"
+# cursor.execute(sql)
+# results = cursor.fetchall()

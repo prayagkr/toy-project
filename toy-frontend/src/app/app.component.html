@@ -1,1 +1,4 @@
-<h1 class="heading">Toy Project</h1>
+<div class="loader-wrapper" *ngIf="commonService.isLoading">
+    <div class="loader"></div>
+</div>
+<router-outlet></router-outlet>
