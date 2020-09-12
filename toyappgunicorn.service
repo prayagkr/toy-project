@@ -7,5 +7,4 @@ After=network.target
 User=pramod_sharma
 Group=www-data
 WorkingDirectory=/home/pramod_sharma/toy-project/src
-ExecStart=/usr/bin/gunicorn3 --workers 3 --bind unix:toyapp.sock -m 007 app:app
-
+ExecStart=/usr/bin/gunicorn3 --workers 3 app:app
