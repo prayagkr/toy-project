@@ -3,3 +3,4 @@
 toy-frontend/node_modules
 toy-frontend/dist
 src/envtoy
+*.pyc
