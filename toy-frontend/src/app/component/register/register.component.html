@@ -1,1 +1,73 @@
-<p>register works!</p>
+<div class="main-container flex">
+
+    <div class="register flex-col">
+        <div class="register__header flex">Registration</div>
+        <div class="register__form flex-col" [formGroup]="registerForm" >
+
+            <mat-form-field class="full-width register__first-name">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" [errorStateMatcher]="matcher" type="text">
+                <mat-error *ngIf="registerForm.get('firstName').hasError('required')">
+                    First Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            
+
+            <mat-form-field class="full-width register__last-name">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" [errorStateMatcher]="matcher" type="text">
+                <mat-error *ngIf="registerForm.get('lastName').hasError('required')">
+                    Last Name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width register__gender">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option selected>Select</mat-option>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="female">Female</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registerForm.get('gender').hasError('required')">
+                    Gender is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width register__email">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="registerForm.get('email').hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width register__password">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" [errorStateMatcher]="matcher" type="password">
+                <mat-error *ngIf="registerForm.get('password').hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field class="full-width register__confirm-password">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher" type="password">
+                <mat-error *ngIf="registerForm.get('confirmPassword').hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <div class="error" *ngIf="registerForm.get('confirmPassword').dirty && registerForm.hasError('passwordNotMatch')" >Password does not match</div>
+            
+            <button mat-raised-button color="primary" class="register__submit flex" 
+                [disabled]="registerForm.invalid" type="submit" (click)="onSubmit()" >Register</button>
+            <div class="register__forget flex">
+                <button mat-button color="primary" routerLink="/login">Back</button>
+                <button mat-button color="primary" (click)="reset()" >Reset</button>
+            </div>
+
+        </div>
+    </div>
+</div>
