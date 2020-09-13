@@ -31,8 +31,14 @@ export class SharedService {
       .pipe(catchError((error) => throwError(error)));
   }
 
-  public getUser(): Observable<HttpResponse<ResponseBody<RegisterModel>>> {
+  public getUserDetails(): Observable<HttpResponse<ResponseBody<RegisterModel>>> {
     const url = environment.BASE_URL + 'user';
+    return this.http.get(url)
+      .pipe(catchError((error) => throwError(error)));
+  }
+
+  public getQuizData(): Observable<HttpResponse<any>> {
+    const url = 'https://opentdb.com/api.php?amount=10&amp;category=17&amp;difficulty=hard&amp;type=multiple';
     return this.http.get(url)
       .pipe(catchError((error) => throwError(error)));
   }

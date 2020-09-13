@@ -9,6 +9,11 @@ import { TokenInterceptorService } from './service/token-interceptor.service';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatTabsModule} from '@angular/material/tabs';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
@@ -18,6 +23,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HttpClientModule,
 
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
+    MatToolbarModule,                 MatIconModule,                              MatMenuModule,
+    MatTabsModule
   ],
   declarations: [
 
@@ -27,6 +34,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     HttpClientModule,
 
     MatInputModule,                   MatButtonModule,                             MatSelectModule,
+    MatToolbarModule,                 MatIconModule,                              MatMenuModule,
+    MatTabsModule
   ]
 })
 export class SharedModule {

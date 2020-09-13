@@ -7,8 +7,8 @@ def get_user_details(email):
     print(user)
     if (user):
         user_details = {
-            "firstname": user["firstname"],
-            "lastname": user["lastname"],
+            "firstName": user["firstname"],
+            "lastName": user["lastname"],
             "gender": user["gender"],
             "email": user["email"]
         }
