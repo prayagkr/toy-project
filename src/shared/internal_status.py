@@ -7,4 +7,4 @@ class StatusCodes(Enum):
 
 
 class ErrorMessages(Enum):
-    IM_4001_UNAUTHORIZED = "Unauthorized"
+    IM_4001_UNAUTHORIZED = "Unauthorized User"

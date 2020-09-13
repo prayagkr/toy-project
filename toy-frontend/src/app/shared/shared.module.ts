@@ -2,14 +2,19 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonService } from './service/common.service';
+import { SharedService } from './service/shared.service';
+import { HttpClientService } from './service/http-client.service';
+import { CookieService } from './service/cookie.service';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
     CommonModule,                     ReactiveFormsModule,                        FormsModule,
+    HttpClientModule,
 
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
   ],
@@ -18,6 +23,7 @@ import {MatSelectModule} from '@angular/material/select';
   ],
   exports: [
     CommonModule,                     ReactiveFormsModule,                        FormsModule,
+    HttpClientModule,
 
     MatInputModule,                   MatButtonModule,                             MatSelectModule,
   ]
@@ -27,7 +33,7 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        CommonService
+        CommonService, SharedService, HttpClientService, CookieService
       ]
     };
   }

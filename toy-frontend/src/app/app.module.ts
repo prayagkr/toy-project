@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ForgetPasswordComponent } from './component/forget-password/forget-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ForgetPasswordComponent } from './component/forget-password/forget-pass
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule.forRoot()
+    SharedModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

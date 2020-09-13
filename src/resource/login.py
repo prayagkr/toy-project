@@ -9,12 +9,11 @@ class Login(Resource):
     def post(self):
         try:
             data = request.get_json()
-            print(data)
             is_valid = validate_user(data['email'], data['password'])
             if (is_valid):
                 token = encode_token(data)
                 return get_response(data={'token': token})
             else:            
-                return {'message': 'User not found'}, 401
+                return {'message': 'User is not Authorized'}, 401
         except Exception as ex:
             print('exception', ex)
