@@ -1,10 +1,20 @@
 <div class="quiz-container flex-col">
     <div class="quiz flex">
         <mat-card class="options flex-col quiz--item">
-            <div class="options--item flex" [class.options--selected]="selected==index"
-                (click)="selectQuestion(question, index)" *ngFor="let question of questions; let index=index">Question
-                {{index + 1}}
-            </div>
+            <ng-container *ngFor="let question of questions; let index=index">
+                <button mat-raised-button class="options--item flex" *ngIf="selected==index"
+                    (click)="selectQuestion(question, index)" color="primary"
+                    >Question {{index + 1}}
+                </button>
+                <button mat-raised-button class="options--item flex" *ngIf="selected!=index"
+                    (click)="selectQuestion(question, index)"
+                    >Question {{index + 1}}
+                </button>
+            </ng-container>
+            <!-- <div class="options--item flex" [class.options--selected]="selected==index"
+                (click)="selectQuestion(question, index)" >Question
+                
+            </div> -->
         </mat-card>
         <mat-card class="question flex-col  quiz--item">
             <ng-container *ngIf="selectedQuestion">
