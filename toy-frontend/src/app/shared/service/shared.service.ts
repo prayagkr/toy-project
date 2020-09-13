@@ -42,4 +42,10 @@ export class SharedService {
     return this.http.post(url, quizScore)
       .pipe(catchError((error) => throwError(error)));
   }
+
+  public getQuizData(): Observable<HttpResponse<ResponseBody<Array<Score>>>> {
+    const url = environment.BASE_URL + 'quiz';
+    return this.http.get(url)
+      .pipe(catchError((error) => throwError(error)));
+  }
 }

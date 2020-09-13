@@ -46,6 +46,6 @@ export class Score {
         public difficulty: string,
         public score: number,
         public id?: number,
-        public submiteddate?: Date
+        public submiteddate?: string
     ) {}
 }

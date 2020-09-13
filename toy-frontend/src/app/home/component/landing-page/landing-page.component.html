@@ -1,0 +1,12 @@
+<div class="landing-container flex">
+    <div class="landing--item flex">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>Welcome <span *ngIf="user && user?.firstName">{{user?.firstName}} {{user?.lastName}}</span>
+                </mat-card-title>
+            </mat-card-header>
+           
+        </mat-card>
+    </div>
+</div>

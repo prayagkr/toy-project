@@ -1,6 +1,6 @@
 from flask import request
 from flask_restful import Resource
-from service.quiz_service import process_quiz_record
+from service.quiz_service import process_quiz_record, get_user_score
 from shared.response import get_response
 from shared.token import internal_authenticate, decode_token
 from shared.custom_exception import AuthorizationException
@@ -11,7 +11,9 @@ class Quiz(Resource):
         try:
             key = internal_authenticate()
             data = decode_token(key)
-            return get_response(message="Server Error", code=5000), 500
+            scores = get_user_score(data['email'])
+            print("scores", scores)
+            return get_response(data=scores), 200
         except AuthorizationException as message:
             return get_response(message=str(message.message),
                                 code=int(message.code.value),
@@ -24,9 +26,7 @@ class Quiz(Resource):
         try:
             key = internal_authenticate()
             user_data = decode_token(key)
-            print(user_data)
             quiz_data = request.get_json()
-            print(quiz_data)
             process_quiz_record(quiz_data, user_data)
             return get_response(message="Record Processed", code=2001), 201
         except AuthorizationException as message:

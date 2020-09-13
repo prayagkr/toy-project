@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterModel } from 'src/app/shared/model/shared.model';
+import { CommonService } from 'src/app/shared/service/common.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor() { }
+  public user: RegisterModel;
+
+  constructor(
+    private commonService: CommonService,
+  ) { }
 
   ngOnInit(): void {
+    this.getUserDetails();
+  }
+
+  private getUserDetails() {
+    this.commonService.userDetails
+      .subscribe(
+        (data: RegisterModel) => {
+
+          this.user = data;
+        }
+      );
   }
 
 }

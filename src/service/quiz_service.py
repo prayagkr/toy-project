@@ -30,3 +30,31 @@ def create_quiz_record(quiz_data, email):
         print(traceback.print_exc())
     finally:
         con.close()
+
+def get_user_score(email):
+    query="""SELECT id, category, difficulty, score, submiteddate 
+            from profile where 
+            userid = (select id from user where email=%s)
+          """
+    scores = []
+    try:
+        con = get_connection()
+        with con.cursor() as cursor:
+            cursor.execute(query, (email,))
+            rows = cursor.fetchall()
+            for row in rows:
+                record = {}
+                record["id"] = row["id"]
+                record["category"] = row["category"]
+                record["difficulty"] = row["difficulty"]
+                record["score"] = row["score"]
+                record["submiteddate"] = row["submiteddate"].isoformat()
+                scores.append(record)
+                print(row)
+
+    except Exception as ex:
+        print(traceback.print_exc())
+    finally:
+        con.close()
+
+    return scores

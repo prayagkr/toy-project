@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from 'src/app/shared/service/common.service';
 import { SharedService } from 'src/app/shared/service/shared.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-import { CookieService } from 'src/app/shared/service/cookie.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Question, ResponseBody, Score } from 'src/app/shared/model/shared.model';
@@ -27,8 +25,6 @@ export class QuizComponent implements OnInit {
     private sharedService: SharedService,
     private commonService: CommonService,
     private toastr: ToastrService,
-    private router: Router,
-    private cookieService: CookieService,
     private httpBackend: HttpBackend
   ) {
     this.questions = new Array<Question>();
