@@ -95,7 +95,7 @@ export class QuizComponent implements OnInit {
     this.selectQuestion(this.questions[index], index);
   }
 
-  public submit(): void {
+  public submit(): void  {
 
   }
 

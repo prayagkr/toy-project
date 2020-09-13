@@ -26,7 +26,8 @@
 }
 
 .question {
-    width: 78vw;
+    min-width: 60vw;
+    max-width: 75vw;
     height: 45rem;
     padding: 2rem;
     justify-content: space-around;
@@ -36,6 +37,7 @@
     }
     &__action {
         justify-content: center;
+        width: 60rem;
 
         &--item:not(:last-child) {
             margin-right: 10rem;
