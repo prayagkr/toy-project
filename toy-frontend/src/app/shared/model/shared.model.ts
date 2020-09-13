@@ -25,3 +25,17 @@ export class RegisterModel {
         public gender?: string
     ) {}
 }
+
+export class Question {
+    constructor(
+        public category?: string,
+        public correct_answer?: string,
+        public difficulty?: string,
+        public incorrect_answers?: Array<string>,
+        public question?: string,
+        public type?: string,
+        public id?: number,
+        public ans?: Array<string>,
+        public ansValue?: string
+    ) {}
+}

@@ -1,0 +1,47 @@
+.quiz-container {
+    max-height: 51.2rem;
+    overflow: hidden;
+}
+
+.options {
+    min-width: 25rem;
+    width: 20vw;
+    border-right: 1px solid grey;
+
+    &--item {
+        height: 3rem;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 1rem;
+        margin: 0.5rem;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+
+    &--selected {
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+        background-color: aquamarine;
+    }
+}
+
+.question {
+    width: 78vw;
+    height: 45rem;
+    padding: 2rem;
+    justify-content: space-around;
+
+    &__bottom {
+        padding-left: 7rem;
+    }
+    &__action {
+        justify-content: center;
+    }
+}
+.radio-button {
+    margin: 5px;
+}
+
+.radio-group {
+    margin: 15px 0;
+}

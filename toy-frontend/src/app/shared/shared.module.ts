@@ -13,6 +13,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -24,7 +25,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
-    MatTabsModule
+    MatTabsModule,                    MatRadioModule
   ],
   declarations: [
 
@@ -35,7 +36,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
     MatInputModule,                   MatButtonModule,                             MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
-    MatTabsModule
+    MatTabsModule,                    MatRadioModule
   ]
 })
 export class SharedModule {

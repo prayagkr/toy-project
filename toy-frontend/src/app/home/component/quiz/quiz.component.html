@@ -1,1 +1,37 @@
-<p>quiz works!</p>
+<div class="quiz-container flex-col">
+    <div class="quiz flex">
+        <div class="options flex-col">
+           <div class="options--item flex" 
+                [class.options--selected]="selected==index"
+                (click)="selectQuestion(question, index)"
+                *ngFor="let question of questions; let index=index">Question {{index + 1}}
+            </div>
+        </div>
+        <div class="question flex-col">
+            <ng-container *ngIf="selectedQuestion">
+                <div class="flex-col question__top">
+                    <div class="question--item flex">Category : {{selectedQuestion.category}}</div>
+                    <div class="question--item flex">Difficulty : {{selectedQuestion.difficulty}}</div>
+                    <div class="question--item flex">Type : {{selectedQuestion.type}}</div>
+                </div>
+                <div class="flex-col question__bottom">
+                    <div class="question--item flex">
+                        <div class="question__section flex-col">
+                            <div class="question__section--item">{{selectedQuestion.question}}</div>
+                            <label id="example-radio-group-label">Pick your favorite season</label>
+                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group" [(ngModel)]="favoriteSeason">
+                                <mat-radio-button class="radio-button" 
+                                    *ngFor="let ans of selectedQuestion?.ans" [value]="ans">
+                                    {{ans}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex question__action">
+                    <button mat-raised-button color="primary">Next</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

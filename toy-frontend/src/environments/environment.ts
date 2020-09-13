@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   BASE_URL: 'http://127.0.0.1:5000/',
   COOKIE_PREFIX: 'local_',
-  COOKIE_DOMAIN_NAME: 'localhost'
+  COOKIE_DOMAIN_NAME: '127.0.0.1'
 };
 
 /*
