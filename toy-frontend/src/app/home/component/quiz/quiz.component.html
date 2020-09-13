@@ -1,13 +1,12 @@
 <div class="quiz-container flex-col">
     <div class="quiz flex">
-        <div class="options flex-col">
-           <div class="options--item flex" 
-                [class.options--selected]="selected==index"
-                (click)="selectQuestion(question, index)"
-                *ngFor="let question of questions; let index=index">Question {{index + 1}}
+        <mat-card class="options flex-col quiz--item">
+            <div class="options--item flex" [class.options--selected]="selected==index"
+                (click)="selectQuestion(question, index)" *ngFor="let question of questions; let index=index">Question
+                {{index + 1}}
             </div>
-        </div>
-        <div class="question flex-col">
+        </mat-card>
+        <mat-card class="question flex-col  quiz--item">
             <ng-container *ngIf="selectedQuestion">
                 <div class="flex-col question__top">
                     <div class="question--item flex">Category : {{selectedQuestion.category}}</div>
@@ -19,11 +18,10 @@
                         <div class="question__section flex-col">
                             <div class="question__section--item">{{selectedQuestion.question}}</div>
                             <label id="example-radio-group-label">Pick your favorite season</label>
-                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group" 
-                                [value]="selectedQuestion.selectedAns"
-                                (change)="ansSelected($event.value)">
-                                <mat-radio-button class="radio-button" 
-                                    *ngFor="let ans of selectedQuestion?.ans" [value]="ans">
+                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group"
+                                [value]="selectedQuestion.selectedAns" (change)="ansSelected($event.value)">
+                                <mat-radio-button class="radio-button" *ngFor="let ans of selectedQuestion?.ans"
+                                    [value]="ans">
                                     {{ans}}
                                 </mat-radio-button>
                             </mat-radio-group>
@@ -31,11 +29,27 @@
                     </div>
                 </div>
                 <div class="flex question__action">
-                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==0" (click)="previous()">Previous</button>
-                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==9" (click)="next()">Next</button>
-                    <button mat-raised-button color="primary" class="question__action--item" (click)="submit()">Submit Quiz</button>
+                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==0"
+                        (click)="previous()">Previous</button>
+                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==9"
+                        (click)="next()">Next</button>
+                    <button mat-raised-button color="primary" class="question__action--item" (click)="submit()">Submit
+                        Quiz</button>
                 </div>
             </ng-container>
-        </div>
+        </mat-card>
+        <mat-card class="score flex-col  quiz--item" *ngIf="scoreSubmited">
+            <mat-card-header>
+                <mat-card-title>
+                    <mat-icon>polymer</mat-icon> Score Card
+                </mat-card-title>
+            </mat-card-header>
+            <div class="button-container">
+                <button mat-mini-fab color="primary" aria-label="score icon" class="score-btn">{{score}}</button>
+            </div>
+            <div class="score__view-ans flex">
+                <button mat-raised-button color="primary">View Correct Answer</button>
+            </div>
+        </mat-card>
     </div>
 </div>

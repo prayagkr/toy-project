@@ -17,6 +17,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatRippleModule} from '@angular/material/core';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -29,7 +30,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
     MatTabsModule,                    MatRadioModule,                             MatTableModule,
-    MatPaginatorModule,               MatCardModule
+    MatPaginatorModule,               MatCardModule,                              MatRippleModule
   ],
   declarations: [
 
@@ -41,7 +42,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
     MatTabsModule,                    MatRadioModule,                             MatTableModule,
-    MatPaginatorModule,               MatCardModule
+    MatPaginatorModule,               MatCardModule,                              MatRippleModule
   ]
 })
 export class SharedModule {

@@ -2,3 +2,23 @@
 .landing-container {
     margin: 2rem;
 }
+.landing--item:not(:last-child) {
+    margin-right: 2rem;
+}
+
+.ripple-container {
+    cursor: pointer;
+    text-align: center;
+  
+    width: 200px;
+    height: 200px;
+    line-height: 100;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+  }

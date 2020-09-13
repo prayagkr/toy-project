@@ -1,12 +1,17 @@
+
+$card-height: 45rem;
+
 .quiz-container {
     max-height: 51.2rem;
     overflow: hidden;
+}
+.quiz {
+    padding: 0 1rem;
 }
 
 .options {
     min-width: 25rem;
     width: 20vw;
-    border-right: 1px solid grey;
 
     &--item {
         height: 3rem;
@@ -26,9 +31,8 @@
 }
 
 .question {
-    min-width: 60vw;
-    max-width: 75vw;
-    height: 45rem;
+    width: 48vw;
+    height: $card-height;
     padding: 2rem;
     justify-content: space-around;
 
@@ -44,10 +48,43 @@
         }
     }
 }
+
+.score {
+    width: 21vw;
+    height: $card-height;
+    padding: 2rem 1rem;
+    justify-content: space-around;
+
+    &__view-ans {
+        margin: 10rem 6rem;
+    }
+}
+
+.score-btn {
+    height: 10rem;
+    width: 10rem;
+    font-size: 6rem;
+}
+
+.quiz--item {
+    margin: 1rem 0.5rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 12rem; 
+    margin: auto;
+    margin-top: 6rem;
+}
+
 .radio-button {
     margin: 5px;
 }
 
 .radio-group {
     margin: 15px 0;
+}
+.mat-card-header {
+    justify-content: center;
 }

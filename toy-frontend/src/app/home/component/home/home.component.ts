@@ -41,7 +41,10 @@ export class HomeComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.commonService.resetLoading();
-
+          this.toastr.error('Something went wrong. Please login again.');
+          setTimeout(() => {
+            this.logout();
+          }, 2000);
         }
       );
   }

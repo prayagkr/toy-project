@@ -10,6 +10,8 @@ import { CommonService } from 'src/app/shared/service/common.service';
 export class LandingPageComponent implements OnInit {
 
   public user: RegisterModel;
+  public centered = false;
+  public unbounded = false;
 
   constructor(
     private commonService: CommonService,

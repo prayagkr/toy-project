@@ -20,6 +20,7 @@ export class QuizComponent implements OnInit {
   public disableNext: boolean;
   public score: number;
   public candidateScore: Score;
+  public scoreSubmited: boolean;
 
   constructor(
     private sharedService: SharedService,
@@ -28,9 +29,9 @@ export class QuizComponent implements OnInit {
     private httpBackend: HttpBackend
   ) {
     this.questions = new Array<Question>();
+    this.scoreSubmited = false;
     this.disableNext = false;
     this.disablePrevious = false;
-    this.score = 0;
   }
 
   ngOnInit(): void {
@@ -117,13 +118,13 @@ export class QuizComponent implements OnInit {
         (response: HttpResponse<ResponseBody<string>>) => {
           this.toastr.success('Total score : ' + this.score);
           this.commonService.resetLoading();
+          this.scoreSubmited = true;
         },
         (error: HttpErrorResponse) => {
-
+          this.toastr.success('Something went wrong. Resubmit your request');
           this.commonService.resetLoading();
         }
       );
-    this.toastr.success('Total score : ' + this.score);
   }
 
 }
