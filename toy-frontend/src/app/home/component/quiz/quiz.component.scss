@@ -14,15 +14,8 @@ $card-height: 45rem;
     width: 20vw;
 
     &--item {
-        // height: 3rem;
-        // align-items: center;
-        // justify-content: flex-start;
-        // padding: 0 1rem;
         margin: 0.5rem;
         width: 26rem;
-        // border-radius: 5px;
-        // box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
-        // cursor: pointer;
     }
 
     &--selected {
@@ -37,12 +30,16 @@ $card-height: 45rem;
     padding: 2rem;
     justify-content: space-around;
 
-    &__bottom {
-        padding-left: 7rem;
+
+    &__card {
+
+        &--item:not(:last-child) {
+            margin-bottom: 1rem;
+        }
     }
+
     &__action {
         justify-content: center;
-        width: 60rem;
 
         &--item:not(:last-child) {
             margin-right: 10rem;
@@ -85,7 +82,11 @@ $card-height: 45rem;
 
 .radio-group {
     margin: 15px 0;
+    margin-left: 3rem;
 }
 .mat-card-header {
     justify-content: center;
+}
+.mat-card-title {
+    font-size: 20px;
 }
