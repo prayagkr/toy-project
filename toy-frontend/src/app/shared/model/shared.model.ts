@@ -36,6 +36,6 @@ export class Question {
         public type?: string,
         public id?: number,
         public ans?: Array<string>,
-        public ansValue?: string
+        public selectedAns?: string
     ) {}
 }

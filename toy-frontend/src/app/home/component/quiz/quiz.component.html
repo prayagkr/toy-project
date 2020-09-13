@@ -19,7 +19,9 @@
                         <div class="question__section flex-col">
                             <div class="question__section--item">{{selectedQuestion.question}}</div>
                             <label id="example-radio-group-label">Pick your favorite season</label>
-                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group" [(ngModel)]="favoriteSeason">
+                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group" 
+                                [value]="selectedQuestion.selectedAns"
+                                (change)="ansSelected($event.value)">
                                 <mat-radio-button class="radio-button" 
                                     *ngFor="let ans of selectedQuestion?.ans" [value]="ans">
                                     {{ans}}

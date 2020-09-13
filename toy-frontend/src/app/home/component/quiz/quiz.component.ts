@@ -51,9 +51,9 @@ export class QuizComponent implements OnInit {
             question.id = index;
             let ans: Array<string> = question.incorrect_answers;
             ans.push(question.correct_answer);
-            let shuffleAns = this.shuffle(ans);
+            const shuffleAns = this.shuffle(ans);
             question.ans = shuffleAns;
-            question.ansValue = '';
+            question.selectedAns = '';
           });
           if (this.questions.length > 0) {
             this.selectQuestion(this.questions[0], 0);
@@ -93,6 +93,10 @@ export class QuizComponent implements OnInit {
   public previous(): void {
     const index = this.selected - 1;
     this.selectQuestion(this.questions[index], index);
+  }
+
+  public ansSelected(value: string): void {
+    this.questions[this.selected].selectedAns = value;
   }
 
   public submit(): void  {
