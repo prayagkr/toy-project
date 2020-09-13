@@ -42,7 +42,7 @@ export class QuizComponent implements OnInit {
   private getQuizData(): void {
     this.commonService.setLoadingTrue();
     const newHttpClient = new HttpClient(this.httpBackend);
-    newHttpClient.get('https://opentdb.com/api.php?amount=10&amp;category=17&amp;difficulty=hard&amp;type=multiple')
+    newHttpClient.get('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
       // this.sharedService.getQuizData()
       .subscribe(
         (response: any) => {
