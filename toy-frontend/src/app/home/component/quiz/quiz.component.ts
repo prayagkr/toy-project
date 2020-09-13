@@ -18,6 +18,8 @@ export class QuizComponent implements OnInit {
   public questions: Array<Question>;
   public selected: number;
   public selectedQuestion: Question;
+  public disablePrevious: boolean;
+  public disableNext: boolean;
 
   constructor(
     private sharedService: SharedService,
@@ -28,6 +30,8 @@ export class QuizComponent implements OnInit {
     private httpBackend: HttpBackend
   ) {
     this.questions = new Array<Question>();
+    this.disableNext = false;
+    this.disablePrevious = false;
   }
 
   ngOnInit(): void {
@@ -78,6 +82,21 @@ export class QuizComponent implements OnInit {
       arra1[index] = temp;
     }
     return arra1;
+  }
+
+  public next(): void {
+    const index = this.selected + 1;
+    this.selectQuestion(this.questions[index], index);
+
+  }
+
+  public previous(): void {
+    const index = this.selected - 1;
+    this.selectQuestion(this.questions[index], index);
+  }
+
+  public submit(): void {
+
   }
 
 }

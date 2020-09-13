@@ -29,7 +29,9 @@
                     </div>
                 </div>
                 <div class="flex question__action">
-                    <button mat-raised-button color="primary">Next</button>
+                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==0" (click)="previous()">Previous</button>
+                    <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==9" (click)="next()">Next</button>
+                    <button mat-raised-button color="primary" class="question__action--item" (click)="submit()">Submit Quiz</button>
                 </div>
             </ng-container>
         </div>
