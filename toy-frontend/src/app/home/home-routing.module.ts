@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'profile',
+        redirectTo: 'landing-page',
         pathMatch: 'full'
       }
     ]
