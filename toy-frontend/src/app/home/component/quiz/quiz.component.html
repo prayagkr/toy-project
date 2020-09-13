@@ -23,13 +23,18 @@
                     <div class="question--item flex">
                         <div class="question__section flex-col">
                             <mat-card-title>{{selectedQuestion.question}}</mat-card-title>
-                            <mat-radio-group aria-labelledby="answers" class="flex-col radio-group"
-                                [value]="selectedQuestion.selectedAns" (change)="ansSelected($event.value)">
-                                <mat-radio-button class="radio-button" *ngFor="let ans of selectedQuestion?.ans"
-                                    [value]="ans">
-                                    {{ans}}
-                                </mat-radio-button>
-                            </mat-radio-group>
+                            <div class="question__option flex">
+                                <mat-radio-group aria-labelledby="answers" class="flex-col radio-group" [disabled]="disableSubmit"
+                                    [value]="selectedQuestion.selectedAns" (change)="ansSelected($event.value)">
+                                    <mat-radio-button class="radio-button" *ngFor="let ans of selectedQuestion?.ans"
+                                        [value]="ans">
+                                        {{ans}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                                <div class="question__option__correct-ans flex" *ngIf="viewCorrectAnswer">
+                                    <mat-chip color="primary" class="correct" selected>{{selectedQuestion.correct_answer}}</mat-chip>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </mat-card>
@@ -38,7 +43,8 @@
                         (click)="previous()">Previous</button>
                     <button mat-raised-button color="primary" class="question__action--item" [disabled]="selected==9"
                         (click)="next()">Next</button>
-                    <button mat-raised-button color="primary" class="question__action--item" (click)="submit()">Submit
+                    <button mat-raised-button color="primary" [disabled]="disableSubmit"
+                        class="question__action--item" (click)="submit()" >Submit
                         Quiz</button>
                 </mat-card>
             </ng-container>
@@ -53,7 +59,7 @@
                 <button mat-mini-fab color="primary" aria-label="score icon" class="score-btn">{{score}}</button>
             </div>
             <div class="score__view-ans flex">
-                <button mat-raised-button color="primary">View Correct Answer</button>
+                <button mat-raised-button color="primary" (click)="showCorrecAnswer()">View Correct Answer</button>
             </div>
         </mat-card>
     </div>

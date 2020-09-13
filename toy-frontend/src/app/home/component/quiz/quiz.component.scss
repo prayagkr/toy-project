@@ -45,6 +45,16 @@ $card-height: 45rem;
             margin-right: 10rem;
         }
     }
+
+    &__option {
+        justify-content: space-between;
+
+        &__correct-ans { 
+            width: 45%;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
 
 .score {
@@ -81,12 +91,15 @@ $card-height: 45rem;
 }
 
 .radio-group {
-    margin: 15px 0;
-    margin-left: 3rem;
+    margin: 15px 1rem 15px 3rem;
 }
 .mat-card-header {
     justify-content: center;
 }
 .mat-card-title {
     font-size: 20px;
+}
+.correct {
+    padding: 5px 10px;
+    border-radius: 20px;
 }

@@ -21,6 +21,8 @@ export class QuizComponent implements OnInit {
   public score: number;
   public candidateScore: Score;
   public scoreSubmited: boolean;
+  public disableSubmit: boolean;
+  public viewCorrectAnswer: boolean;
 
   constructor(
     private sharedService: SharedService,
@@ -32,6 +34,8 @@ export class QuizComponent implements OnInit {
     this.scoreSubmited = false;
     this.disableNext = false;
     this.disablePrevious = false;
+    this.disableSubmit = false;
+    this.viewCorrectAnswer = false;
   }
 
   ngOnInit(): void {
@@ -100,6 +104,7 @@ export class QuizComponent implements OnInit {
   }
 
   public submit(): void {
+    this.disableSubmit = true;
     this.commonService.setLoadingTrue();
     this.score = 0;
 
@@ -122,9 +127,14 @@ export class QuizComponent implements OnInit {
         },
         (error: HttpErrorResponse) => {
           this.toastr.success('Something went wrong. Resubmit your request');
+          this.disableSubmit = false;
           this.commonService.resetLoading();
         }
       );
+  }
+
+  public showCorrecAnswer() {
+    this.viewCorrectAnswer = true;
   }
 
 }
