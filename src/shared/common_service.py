@@ -1,4 +1,4 @@
-
+import base64
 
 def encrypt_password(password):
     """ need to encrypt password """
@@ -6,10 +6,4 @@ def encrypt_password(password):
 
 def decrypt_password(password):
     """ need to encrypt password """
-    return password
-
-def is_pass_valid(record_pass, user_pass):
-    rec_pass = decrypt_password(record_pass)
-    if rec_pass == user_pass:
-        return True
-    return False
+    return base64.b64decode(password).decode('utf-8')

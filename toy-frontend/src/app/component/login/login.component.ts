@@ -2,12 +2,12 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/service/shared.service';
-import { ResponseBody } from '../../shared/model/shared.model';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/shared/service/common.service';
 import { CookieService } from 'src/app/shared/service/cookie.service';
-import { Router } from '@angular/router';
+import { LoginModel, ResponseBody } from '../../shared/model/shared.model';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
   ) {
     this.matcher = new MyErrorStateMatcher();
+    this.cookieService.clearCookie('token');
   }
 
   ngOnInit(): void {
@@ -51,10 +52,11 @@ export class LoginComponent implements OnInit {
 
   public onSubmit(): void {
     this.commonService.setLoadingTrue();
-    this.sharedService.login(this.loginForm.value)
+    const fv = this.loginForm.value;
+    const data: LoginModel = new LoginModel(fv.email, window.btoa(fv.password));
+    this.sharedService.login(data)
       .subscribe(
         (response: HttpResponse<ResponseBody<any>>) => {
-          console.log('response', response.body);
           if (response.body.code === 2000) {
             const token = response.body.data.token;
             this.cookieService.setCookie('token', token);
@@ -63,7 +65,8 @@ export class LoginComponent implements OnInit {
           }
         },
         (error: HttpErrorResponse) => {
-          console.error('error');
+          this.toastr.error('Invalid Email/Pasword. Please try again.');
+          this.commonService.resetLoading();
         },
         () => {
           this.commonService.resetLoading();
