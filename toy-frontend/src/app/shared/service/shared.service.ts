@@ -30,4 +30,10 @@ export class SharedService {
     return this.http.post(url, data)
       .pipe(catchError((error) => throwError(error)));
   }
+
+  public getUser(): Observable<HttpResponse<ResponseBody<RegisterModel>>> {
+    const url = environment.BASE_URL + 'user';
+    return this.http.get(url)
+      .pipe(catchError((error) => throwError(error)));
+  }
 }

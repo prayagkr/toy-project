@@ -14,6 +14,7 @@ class Register(Resource):
             if (register_id):
                 return get_response(data={'id': register_id})
             else:            
-                return get_response(message="Failed to create user", code=1000), 400
+                return get_response(message="Failed to create user",
+                    code=1000), 400
         except Exception as ex:
             return get_response(message="Server Error", code=5000), 500
