@@ -14,5 +14,10 @@ CREATE TABLE profile (
 	category VARCHAR(50),
 	difficulty VARCHAR(20),
 	score INT(4),
-	submiteddate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+	submiteddate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    userid INT (6) UNSIGNED,
+    INDEX usr_ind (userid),
+    FOREIGN KEY (userid)
+        REFERENCES user(id)
+        ON DELETE CASCADE
 );

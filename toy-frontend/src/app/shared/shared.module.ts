@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatTableModule} from '@angular/material/table';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -25,7 +26,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
     MatInputModule,                   MatButtonModule,                            MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
-    MatTabsModule,                    MatRadioModule
+    MatTabsModule,                    MatRadioModule,                             MatTableModule
   ],
   declarations: [
 
@@ -34,9 +35,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     CommonModule,                     ReactiveFormsModule,                        FormsModule,
     HttpClientModule,
 
-    MatInputModule,                   MatButtonModule,                             MatSelectModule,
+    MatInputModule,                   MatButtonModule,                            MatSelectModule,
     MatToolbarModule,                 MatIconModule,                              MatMenuModule,
-    MatTabsModule,                    MatRadioModule
+    MatTabsModule,                    MatRadioModule,                             MatTableModule
   ]
 })
 export class SharedModule {

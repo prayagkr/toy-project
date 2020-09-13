@@ -39,3 +39,13 @@ export class Question {
         public selectedAns?: string
     ) {}
 }
+
+export class Score {
+    constructor(
+        public category: string,
+        public difficulty: string,
+        public score: number,
+        public id?: number,
+        public submiteddate?: Date
+    ) {}
+}

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'src/app/shared/service/cookie.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { HttpClient, HttpBackend } from '@angular/common/http';
-import { Question } from 'src/app/shared/model/shared.model';
+import { Question, ResponseBody, Score } from 'src/app/shared/model/shared.model';
 
 @Component({
   selector: 'app-quiz',
@@ -20,6 +20,8 @@ export class QuizComponent implements OnInit {
   public selectedQuestion: Question;
   public disablePrevious: boolean;
   public disableNext: boolean;
+  public score: number;
+  public candidateScore: Score;
 
   constructor(
     private sharedService: SharedService,
@@ -32,6 +34,7 @@ export class QuizComponent implements OnInit {
     this.questions = new Array<Question>();
     this.disableNext = false;
     this.disablePrevious = false;
+    this.score = 0;
   }
 
   ngOnInit(): void {
@@ -99,8 +102,32 @@ export class QuizComponent implements OnInit {
     this.questions[this.selected].selectedAns = value;
   }
 
-  public submit(): void  {
+  public submit(): void {
+    this.commonService.setLoadingTrue();
+    this.score = 0;
 
+    this.questions.forEach((question: Question) => {
+      if (question.correct_answer === question.selectedAns) {
+        this.score += 1;
+      }
+    });
+    this.candidateScore = new Score(
+      this.selectedQuestion.category,
+      this.selectedQuestion.difficulty,
+      this.score
+    );
+    this.sharedService.submitQuiz(this.candidateScore)
+      .subscribe(
+        (response: HttpResponse<ResponseBody<string>>) => {
+          this.toastr.success('Total score : ' + this.score);
+          this.commonService.resetLoading();
+        },
+        (error: HttpErrorResponse) => {
+
+          this.commonService.resetLoading();
+        }
+      );
+    this.toastr.success('Total score : ' + this.score);
   }
 
 }

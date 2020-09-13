@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientService } from './http-client.service';
-import { LoginModel, ResponseBody, RegisterModel } from '../model/shared.model';
+import { LoginModel, ResponseBody, RegisterModel, Score } from '../model/shared.model';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpResponse } from '@angular/common/http';
@@ -37,9 +37,9 @@ export class SharedService {
       .pipe(catchError((error) => throwError(error)));
   }
 
-  public getQuizData(): Observable<HttpResponse<any>> {
-    const url = 'https://opentdb.com/api.php?amount=10&amp;category=17&amp;difficulty=hard&amp;type=multiple';
-    return this.http.get(url)
+  public submitQuiz(quizScore: Score): Observable<HttpResponse<ResponseBody<string>>> {
+    const url = environment.BASE_URL + 'quiz';
+    return this.http.post(url, quizScore)
       .pipe(catchError((error) => throwError(error)));
   }
 }
