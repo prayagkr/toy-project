@@ -1,0 +1,114 @@
+<div class="container-fluid page-content mat-elevation-z8 clean">
+  <ngx-loading [show]="loading"></ngx-loading>
+
+  <h5 class="page-title"><mat-icon class="logo">cleaning_services</mat-icon> Clean Report</h5>
+  <div class="form-block">
+    <table>
+      <tr>
+        <td><label>Select project:</label></td>
+        <td>
+          <mat-form-field>
+            <mat-select
+              [(value)]="selectedProject"
+              (selectionChange)="getAppModules()"
+              matTooltip="Choose project"
+              required
+            >
+              <mat-option *ngFor="let appProject of appProjectsList" [value]="appProject.name">
+                {{ appProject.name | trimsplash }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Select module:</label></td>
+        <td>
+          <!-- <mat-form-field>
+            <mat-select
+              [(value)]="selectedModule"
+              (selectionChange)="unableDate()"
+              matTooltip="Choose module"
+              [disabled]="isModuleDisabled"
+              required
+            >
+              <mat-option *ngFor="let appModule of appModuleList" [value]="appModule.name">
+                {{ appModule.name | trimsplash }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
+          <mat-form-field>
+            <mat-select (openedChange)="openedChange($event)" [formControl]="selectFormControl" multiple>
+              <mat-select-trigger>
+                {{selectFormControl.value ? selectFormControl.value[0] : ''}}
+                <span *ngIf="selectFormControl.value?.length > 1" class="additional-selection">
+                  (+{{selectFormControl.value.length - 1}} {{selectFormControl.value?.length === 2 ? 'other' : 'others'}})
+                </span>
+              </mat-select-trigger>
+          
+              <div class="select-container">
+          
+                <mat-form-field style="width:100%;">
+                  <input autocomplete="off" placeholder="Search" aria-label="Search" matInput
+                    [formControl]="searchTextboxControl">
+                  <button [disableRipple]="true" *ngIf="searchTextboxControl.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="clearSearch($event)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+          
+                <mat-optgroup *ngIf="(filteredOptions | async).length == 0">
+                  <div>No results found!</div>
+                </mat-optgroup>
+          
+                <mat-option (onSelectionChange)="selectionChange($event)" *ngFor="let option of filteredOptions | async"
+                  [value]="option.name">
+                  {{option.name}}
+                </mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+          <!-- <div *ngIf="selectFormControl.value">{{ selectFormControl.value }}</div> -->
+         
+          <mat-chip-list *ngIf="selectFormControl.value">
+            <mat-chip *ngFor="let sv of selectedValues" (removed)="remove(sv)">
+              {{ sv }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Select Date:</label></td>
+        <td>
+          <mat-form-field class="cal-input">
+            <input
+              type="text"
+              matInput
+              matTooltip="Select date"
+              [(ngModel)]="inputDate"
+              name="daterange"
+              [disabled]="isDateFilter"
+              (keydown.Tab)="onDateSelect()"
+            />
+          </mat-form-field>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="form-action">
+          <button mat-raised-button color="primary" (click)="cleanReport()">Clean</button>
+        </td>
+      </tr>
+    </table>
+    <div class="console-window" *ngIf="resp">
+      <div class="console-header"><mat-icon>wysiwyg</mat-icon> Console log</div>
+      <div class="console-body">
+        <ul>
+          <li *ngFor="let log of resp">{{ log }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
