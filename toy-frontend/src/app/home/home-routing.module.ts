@@ -4,6 +4,7 @@ import { HomeComponent } from '../home/component/home/home.component';
 import { QuizComponent } from './component/quiz/quiz.component';
 import { LandingPageComponent } from './component/landing-page/landing-page.component';
 import { ProfileComponent } from './component/profile/profile.component';
+import { CanDeactivateGuard } from '../guard/can-deactivate.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       },
       {
         path: 'quiz',
-        component: QuizComponent
+        component: QuizComponent,
+        canDeactivate: [CanDeactivateGuard],
       },
       {
         path: 'profile',

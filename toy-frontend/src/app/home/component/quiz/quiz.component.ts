@@ -5,13 +5,16 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Question, ResponseBody, Score } from 'src/app/shared/model/shared.model';
+import { CanDeactivateInterface } from '../../../shared/model/can-deactivate.model';
+import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, CanDeactivateInterface {
 
   public questions: Array<Question>;
   public selected: number;
@@ -135,6 +138,11 @@ export class QuizComponent implements OnInit {
 
   public showCorrecAnswer() {
     this.viewCorrectAnswer = true;
+  }  
+
+  public canDeactivate(currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot,
+    nextState?: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return true;
   }
 
 }
