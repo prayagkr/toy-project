@@ -1,0 +1,31 @@
+<div class="toast-container toast-position__center " >
+    <ng-container  *ngFor="let toaster of toasters; let i = index">
+        <div class="toaster fade-out" appToaster (close)="close(toaster.id, i)">
+            <div class="toaster__wrapper ">
+                <div class="toaster__bar"
+                [class.success]="toaster?.colorType[0]"
+                [class.danger]="toaster?.colorType[1]"
+                [class.warning]="toaster?.colorType[2]"
+                [class.info]="toaster?.colorType[3]" >
+                </div>
+                <div class="toaster__icon">
+                    <i class="fa fa-check-circle toast--success" *ngIf="toaster?.colorType[0]"></i>
+                    <i class="fa fa-exclamation-triangle toast--danger" *ngIf="toaster?.colorType[1]"></i>
+                    <i class="fa fa-exclamation-circle toast--warning" *ngIf="toaster?.colorType[2]"></i>
+                    <i class="fa fa-info-circle toast--info" *ngIf="toaster?.colorType[3]"></i>
+                </div>
+                <div class="toaster__content">
+                    <h1 class="toaster__content--header " 
+                    [class.toast--success]="toaster?.colorType[0]"
+                    [class.toast--danger]="toaster?.colorType[1]"
+                    [class.toast--warning]="toaster?.colorType[2]"
+                    [class.toast--info]="toaster?.colorType[3]" >{{toaster.header}}</h1>
+                    <span>{{toaster.message}}</span>
+                </div>
+                <div class="toaster__close" (click)="close(toaster.id, i)">
+                    <span class="close__icon" >&nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
